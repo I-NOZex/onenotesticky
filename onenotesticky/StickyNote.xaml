@@ -1,0 +1,89 @@
+﻿<Window x:Class="onenotesticky.StickyNote" 
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:local="clr-namespace:onenotesticky"
+            Title="{Binding Title}" WindowStyle="None" Height="208" Width="267" ResizeMode="CanResizeWithGrip"
+            KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
+
+    <Window.DataContext>
+        <!-- Declaratively create an instance of our Page View Model-->
+        <local:PageViewModel />
+    </Window.DataContext>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="{Binding ActualHeight,ElementName=titlebar}"/>
+    </WindowChrome.WindowChrome>
+
+    <DockPanel LastChildFill="True">
+        <Grid Background="#FFFDE3A7" DockPanel.Dock="Top" x:Name="titlebar" Height="32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="14*"/>
+                <ColumnDefinition Width="87*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding Title}" 
+    			Margin="1,8,0,8"
+    			VerticalAlignment="Center" Grid.Column="1" Height="16" HorizontalAlignment="Left">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="White" ShadowDepth="3"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <Button x:Name="btn_close" Style="{DynamicResource ButtonStyle1}" Grid.Column="3"  WindowChrome.IsHitTestVisibleInChrome="True" Margin="1,4,3,4" BorderThickness="1 " HorizontalAlignment="Stretch" Height="24" Padding="0" FontWeight="Bold" Click="Button_Click_1" Width="25">
+                <Button.Content>
+                    <Path Data="M0,0 L1,1 M0,1 L1,0" Stretch="Uniform" Width="12" >
+                        <Path.Style>
+                            <Style TargetType="{x:Type Path}">
+                                <Style.Triggers>
+                                    <DataTrigger 
+                                    Binding="{Binding ElementName=btn_close,Path=IsPressed}"
+                                    Value="True">
+                                        <Setter Property="Stroke" Value="#ffDEDEDE" />
+                                    </DataTrigger>
+                                    <DataTrigger 
+                                    Binding="{Binding ElementName=btn_close,Path=IsPressed}"
+                                    Value="False">
+                                        <Setter Property="Stroke" Value="#FF212121" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Path.Style>
+                    </Path>
+                </Button.Content>
+            </Button>
+
+            <Button x:Name="btn_new" Style="{DynamicResource btn}"  WindowChrome.IsHitTestVisibleInChrome="True" Margin="3,3,0,4" Width="25" Padding="0" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" UseLayoutRounding="False" VerticalAlignment="Stretch" FontWeight="ExtraBold" FontStretch="Condensed" RenderTransformOrigin="0.5,0.5" Click="Button_Click" Cursor="Arrow" BorderThickness="1">
+                <Button.Content>
+                    <Path Data="M0,0 L1,1 M0,1 L1,0" Stretch="Uniform" Stroke="#FF212121" Width="12" RenderTransformOrigin="0.5,0.5" >
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="45"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                    </Path>
+                </Button.Content>
+            </Button>
+
+            <Button x:Name="btn_menu"  Style="{DynamicResource ButtonStyle1}" Grid.Column="2"  WindowChrome.IsHitTestVisibleInChrome="True" Margin="0,4,3,4" BorderThickness="1" Width="25" HorizontalAlignment="Right" Height="24" Padding="0" FontWeight="Bold" Click="btn_menu_Click">
+                <Button.Content>
+                    <Path Data="M0,2 H9  M0,5 H9 M0,8 H9" Stretch="Uniform" Stroke="#FF212121" Width="12" />
+                </Button.Content>
+            </Button>
+        </Grid>
+
+        <DockPanel LastChildFill="True">
+            <RichTextBox Name="notecontent" BorderThickness="0" BorderBrush="{x:Null}" FontFamily="Segoe Print" FontSize="14" Background="#FFFFE9B6">
+                <FlowDocument Language="pt-pt" >
+                    <Paragraph>
+                        <Run x:Name="tbResponse" Text="{Binding PageContent}"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </DockPanel>
+    </DockPanel>
+</Window>
