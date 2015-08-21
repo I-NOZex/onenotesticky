@@ -47,9 +47,9 @@ namespace onenotesticky {
 
         private void Window_KeyDown(object sender, KeyEventArgs e) {
             if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl) {
-                notecontent.IsDocumentEnabled = true;
-                notecontent.IsReadOnly = true;
-                notecontent.AddHandler(Hyperlink.RequestNavigateEvent, new RequestNavigateEventHandler(RequestNavigateHandler));
+                txt_noteContent.IsDocumentEnabled = true;
+                txt_noteContent.IsReadOnly = true;
+                txt_noteContent.AddHandler(Hyperlink.RequestNavigateEvent, new RequestNavigateEventHandler(RequestNavigateHandler));
             }
         }
 
@@ -60,8 +60,8 @@ namespace onenotesticky {
         }
 
         private void disableHyperlinks() {
-                notecontent.IsDocumentEnabled = false;
-                notecontent.IsReadOnly = false;   
+            txt_noteContent.IsDocumentEnabled = false;
+            txt_noteContent.IsReadOnly = false;   
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e) {

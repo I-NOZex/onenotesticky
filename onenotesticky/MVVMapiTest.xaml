@@ -7,13 +7,13 @@
         Unloaded="Window_Unloaded" Top="0" VerticalAlignment="Center" HorizontalAlignment="Center">
 
     <Window.DataContext>
-        <!-- Declaratively create an instance of our Page View Model-->
+        <!-- Declaratively create an instance of our Main View Model-->
         <local:MainViewModel />
     </Window.DataContext>
 
     <Grid VerticalAlignment="Top">
-        <Grid Name="signiningScreen" Panel.ZIndex="10" Background="White" Visibility="Hidden">
-            <Label Content="loading" FontSize="72"></Label>
+        <Grid Name="signiningScreen" Panel.ZIndex="10" Background="White" Visibility="{Binding LoadingOverlay}">
+            <Label Content="loading" FontSize="45" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
         
         <Label Content="Notebooks" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="175"/>

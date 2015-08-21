@@ -85,13 +85,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controls\MarkupConverter\htmlcssparser.cs" />
-    <Compile Include="Controls\MarkupConverter\htmlfromxamlconverter.cs" />
-    <Compile Include="Controls\MarkupConverter\htmllexicalanalyzer.cs" />
-    <Compile Include="Controls\MarkupConverter\htmlparser.cs" />
-    <Compile Include="Controls\MarkupConverter\htmlschema.cs" />
-    <Compile Include="Controls\MarkupConverter\htmltokentype.cs" />
-    <Compile Include="Controls\MarkupConverter\htmltoxamlconverter.cs" />
+    <Compile Include="Extensions\MarkupConverter\htmlcssparser.cs" />
+    <Compile Include="Extensions\MarkupConverter\htmlfromxamlconverter.cs" />
+    <Compile Include="Extensions\MarkupConverter\htmllexicalanalyzer.cs" />
+    <Compile Include="Extensions\MarkupConverter\htmlparser.cs" />
+    <Compile Include="Extensions\MarkupConverter\htmlschema.cs" />
+    <Compile Include="Extensions\MarkupConverter\htmltokentype.cs" />
+    <Compile Include="Extensions\MarkupConverter\htmltoxamlconverter.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="MVVM Helpers\AsyncObservableCollection.cs" />
     <Compile Include="MVVM Helpers\NotifyTaskCompletion.cs" />

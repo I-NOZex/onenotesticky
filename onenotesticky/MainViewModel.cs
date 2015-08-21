@@ -18,6 +18,19 @@ using onenotesticky.nsSection;
 namespace onenotesticky {
     class MainViewModel : ObservableObject {
 
+        private string loadingOverlay;
+        public string LoadingOverlay { 
+            get {
+                return this.loadingOverlay;
+            }
+            set {
+                if (value != this.loadingOverlay) {
+                    this.loadingOverlay = value;
+                    RaisePropertyChanged("LoadingOverlay");
+                }
+            }
+        }
+
         private AsyncObservableCollection<NotebookViewModel> notebooks = new AsyncObservableCollection<NotebookViewModel>();
 
         public AsyncObservableCollection<NotebookViewModel> Notebooks {
@@ -36,6 +49,7 @@ namespace onenotesticky {
         public MainViewModel() {
 
             NotebookService.getNotebooks((notebookModel) => {
+                LoadingOverlay = "Visible";
                 foreach (Notebook nb in notebookModel.Notebooks) {
                     NotebookViewModel notebookVM = new NotebookViewModel();
                     notebookVM.Notebook = nb;
@@ -51,15 +65,17 @@ namespace onenotesticky {
                                             pageVM.Page = pg;
                                             sectionVM.Pages.Add(pageVM);
                                         }
-                                        System.Diagnostics.Debug.WriteLine("All data received");
+                                        
                                     });   
                                 /////////////////////////////
                                 notebookVM.Sections.Add(sectionVM);
                             }
                         });                    
                     /////////////////////////////
-                    this.Notebooks.Add(notebookVM);
+                    this.Notebooks.Add(notebookVM);    
                 }
+                LoadingOverlay = "Hidden";
+                System.Diagnostics.Debug.WriteLine("All data received");
             });
         }
 

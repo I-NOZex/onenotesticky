@@ -128,7 +128,7 @@ namespace onenotesticky {
             StickyNote note = new StickyNote() { DataContext = this };
             //System.Windows.Documents.FlowDocument doc = new System.Windows.Documents.FlowDocument();
             //doc.Blocks.Add((System.Windows.Documents.Block)MarkupConverter.HtmlToXamlConverter.ConvertHtmlToXaml(this.pageContent, true));
-            note.notecontent.Document = XamlReader.Parse(MarkupConverter.HtmlToXamlConverter.ConvertHtmlToXaml(this.pageContent, true)) as FlowDocument;
+            note.txt_noteContent.Document = XamlReader.Parse(MarkupConverter.HtmlToXamlConverter.ConvertHtmlToXaml(this.pageContent, true)) as FlowDocument;
             note.ShowInTaskbar = false;
             System.Diagnostics.Debug.WriteLine(MarkupConverter.HtmlToXamlConverter.ConvertHtmlToXaml(this.pageContent, true));
             note.Show();
