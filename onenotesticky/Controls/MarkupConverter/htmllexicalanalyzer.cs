@@ -21,7 +21,7 @@ namespace MarkupConverter
     /// recognizes tokens as groups of characters separated by arbitrary amounts of whitespace
     /// also classifies tokens according to type
     /// </summary>
-    internal class HtmlLexicalAnalyzer
+    internal class HtmlLexicalAnalyzer : IDisposable
     {
         // ---------------------------------------------------------------------
         //

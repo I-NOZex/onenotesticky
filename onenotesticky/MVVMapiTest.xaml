@@ -4,7 +4,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:onenotesticky"
         Title="MVVMapiTest" Height="108" Width="639" ResizeMode="NoResize" Topmost="True" WindowStyle="ToolWindow"
-        Unloaded="Window_Unloaded">
+        Unloaded="Window_Unloaded" Top="0" VerticalAlignment="Center" HorizontalAlignment="Center">
 
     <Window.DataContext>
         <!-- Declaratively create an instance of our Page View Model-->

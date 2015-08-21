@@ -77,7 +77,7 @@
         </Grid>
 
         <DockPanel LastChildFill="True">
-            <RichTextBox Name="notecontent" BorderThickness="0" BorderBrush="{x:Null}" FontFamily="Segoe Print" FontSize="14" Background="#FFFFE9B6">
+            <RichTextBox Name="notecontent" BorderThickness="0" BorderBrush="{x:Null}" FontFamily="Segoe Print" FontSize="14" Background="#FFFFE9B6" VerticalScrollBarVisibility="Auto">
                 <FlowDocument Language="pt-pt" >
                     <Paragraph>
                         <Run x:Name="tbResponse" Text="{Binding PageContent}"/>
