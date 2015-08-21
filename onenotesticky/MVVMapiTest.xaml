@@ -6,12 +6,7 @@
         Title="MVVMapiTest" Height="108" Width="639" ResizeMode="NoResize" Topmost="True" WindowStyle="ToolWindow"
         Unloaded="Window_Unloaded" Top="0" VerticalAlignment="Center" HorizontalAlignment="Center">
 
-    <Window.DataContext>
-        <!-- Declaratively create an instance of our Main View Model-->
-        <local:MainViewModel />
-    </Window.DataContext>
-
-    <Grid VerticalAlignment="Top">
+    <Grid>
         <Grid Name="signiningScreen" Panel.ZIndex="10" Background="White" Visibility="{Binding LoadingOverlay}">
             <Label Content="loading" FontSize="45" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
@@ -26,7 +21,7 @@
         </ComboBox>
 
         <Label Content="Sections" HorizontalAlignment="Left" Margin="219,10,0,0" VerticalAlignment="Top" Width="175"/>
-        <ComboBox SelectionChanged="sectionsList_SelectionChanged" ItemsSource="{Binding SelectedItem.Sections, ElementName=notebooksList}" x:Name="sectionsList" HorizontalAlignment="Left" Margin="219,41,0,0" VerticalAlignment="Top" Width="175">
+        <ComboBox ItemsSource="{Binding SelectedItem.Sections, ElementName=notebooksList}" x:Name="sectionsList" HorizontalAlignment="Left" Margin="219,41,0,0" VerticalAlignment="Top" Width="175">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Section.Name}"/>

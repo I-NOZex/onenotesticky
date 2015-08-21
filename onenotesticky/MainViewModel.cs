@@ -47,36 +47,35 @@ namespace onenotesticky {
 
 
         public MainViewModel() {
-
-            NotebookService.getNotebooks((notebookModel) => {
-                LoadingOverlay = "Visible";
-                foreach (Notebook nb in notebookModel.Notebooks) {
-                    NotebookViewModel notebookVM = new NotebookViewModel();
-                    notebookVM.Notebook = nb;
-                    /////////////////////////////
+                NotebookService.getNotebooks((notebookModel) => {
+                    LoadingOverlay = "Visible";
+                    foreach (Notebook nb in notebookModel.Notebooks) {
+                        NotebookViewModel notebookVM = new NotebookViewModel();
+                        notebookVM.Notebook = nb;
+                        /////////////////////////////
                         NotebookService.getNotebookSections(nb.Id, (sectionModel) => {
                             foreach (Section s in sectionModel.Sections) {
                                 SectionViewModel sectionVM = new SectionViewModel();
                                 sectionVM.Section = s;
                                 /////////////////////////////
-                                    SectionService.getSectionPages(s.Id, (pageModel) => {
-                                        foreach (Page pg in pageModel.Pages) {
-                                            PageViewModel pageVM = new PageViewModel();
-                                            pageVM.Page = pg;
-                                            sectionVM.Pages.Add(pageVM);
-                                        }
-                                        
-                                    });   
+                                SectionService.getSectionPages(s.Id, (pageModel) => {
+                                    foreach (Page pg in pageModel.Pages) {
+                                        PageViewModel pageVM = new PageViewModel();
+                                        pageVM.Page = pg;
+                                        sectionVM.Pages.Add(pageVM);
+                                    }
+
+                                });
                                 /////////////////////////////
                                 notebookVM.Sections.Add(sectionVM);
                             }
-                        });                    
-                    /////////////////////////////
-                    this.Notebooks.Add(notebookVM);    
-                }
-                LoadingOverlay = "Hidden";
-                System.Diagnostics.Debug.WriteLine("All data received");
-            });
+                        });
+                        /////////////////////////////
+                        this.Notebooks.Add(notebookVM);
+                    }
+                    LoadingOverlay = "Hidden";
+                    System.Diagnostics.Debug.WriteLine("All data received");
+                });
         }
 
         //public void fillNotebook(NotebookModel nb) {

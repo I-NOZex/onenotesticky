@@ -12,6 +12,7 @@ namespace onenotesticky {
     /// Page class is the note itself
     /// </summary>
     class NotebookViewModel : ObservableObject {
+        #region Members
         private Notebook notebook;
         public Notebook Notebook {
             get { return this.notebook; }
@@ -44,17 +45,12 @@ namespace onenotesticky {
                 RaisePropertyChanged("Sections");
             }
         }
+        #endregion
 
+        #region Constructor
+        public NotebookViewModel(){
 
-        public NotebookViewModel()
-        {
-            Notebook = new Notebook { Name = "Unknown" };
-            //Txt = "oi";
-            //this.sections.Add(new SectionViewModel { SectionID = 1 });
-            //this.sections.Add(new SectionViewModel { SectionID = 2 });
-            //this.sections.Add(new SectionViewModel { SectionID = 3 });
         }
-
-
+        #endregion
     }
 }
