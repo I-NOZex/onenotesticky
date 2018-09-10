@@ -191,3 +191,4 @@ ModelManifest.xml
 #Properties
 Resources.resx
 Resources.Designer.cs
+.vs/*
