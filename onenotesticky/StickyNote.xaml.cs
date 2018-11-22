@@ -24,6 +24,7 @@ namespace onenotesticky {
     /// </summary>
     public partial class StickyNote : Window {
         public StickyNote() {
+
             InitializeComponent();
         }
 
